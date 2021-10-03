@@ -231,26 +231,22 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (counter > 150){
 		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,1);
 		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,0);
-		update_seven_segment_driver(1);
-		seven_segment_driver();
+		update_seven_segment_driver(0);
 	}
 	else if (counter > 100){
 		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,1);
 		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,0);
-		update_seven_segment_driver(2);
-		seven_segment_driver();
+		update_seven_segment_driver(1);
 	}
 	else if (counter >50){
 		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,1);
 		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,0);
-		update_seven_segment_driver(3);
-		seven_segment_driver();
+		update_seven_segment_driver(2);
 	}
 	else{
 		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,1);
 		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,0);
-		update_seven_segment_driver(0);
-		seven_segment_driver();
+		update_seven_segment_driver(3);
 	}
 	if (counter ==0){
 		HAL_GPIO_WritePin(LED_BLINK_PORT,LED_BLINK_PIN,1);

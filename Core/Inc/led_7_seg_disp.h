@@ -9,7 +9,7 @@
 #define INC_LED_7_SEG_DISP_H_
 
 
-void update_seven_segment_driver(uint8_t val);
-void seven_segment_driver(void);
+void update_seven_segment_driver(uint8_t index);
+void seven_segment_driver(uint8_t index);
 
 #endif /* INC_LED_7_SEG_DISP_H_ */
