@@ -19,10 +19,10 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include "led_7_seg_disp.h"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "led_7_seg_disp.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -197,14 +197,17 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOB_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8
+                          |GPIO_PIN_9, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3
-                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
+                          |GPIO_PIN_4|GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_SET);
 
-  /*Configure GPIO pins : PA5 PA6 PA7 */
-  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7;
+  /*Configure GPIO pins : PA5 PA6 PA7 PA8
+                           PA9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6|GPIO_PIN_7|GPIO_PIN_8
+                          |GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -222,25 +225,37 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter = 100;
+int counter = 200;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	counter--;
-	if (counter > 50){
+	if (counter > 150){
+		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,1);
 		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,0);
-		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,1);
 		update_seven_segment_driver(1);
 		seven_segment_driver();
 	}
-	else {
+	else if (counter > 100){
 		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,1);
 		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,0);
 		update_seven_segment_driver(2);
 		seven_segment_driver();
 	}
+	else if (counter >50){
+		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,1);
+		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,0);
+		update_seven_segment_driver(3);
+		seven_segment_driver();
+	}
+	else{
+		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,1);
+		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,0);
+		update_seven_segment_driver(0);
+		seven_segment_driver();
+	}
 	if (counter ==0){
 		HAL_GPIO_WritePin(LED_BLINK_PORT,LED_BLINK_PIN,1);
 		HAL_GPIO_WritePin(LED_BLINK_PORT,LED_BLINK_PIN,0);
-		counter=100;
+		counter=200;
 	}
 
 }
