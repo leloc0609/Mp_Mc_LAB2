@@ -1,2 +1,3 @@
-led_7_seg_disp.c:26:6:update_seven_segment_driver	16	static
-led_7_seg_disp.c:47:6:seven_segment_driver	16	static
+led_7_seg_disp.c:26:6:update_clock_buffer	16	static
+led_7_seg_disp.c:29:6:update_seven_segment_driver	16	static
+led_7_seg_disp.c:50:6:seven_segment_driver	16	static

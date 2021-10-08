@@ -21,8 +21,11 @@ static uint8_t LED7Conversion[10]={
 		0x7f,  // 8
 		0x67   // 9
 };
-static uint8_t numBuffer[NUMBER_OF_7_SEG_LED] = {1,2,3,4};
+static uint8_t numBuffer[NUMBER_OF_7_SEG_LED];
 static uint8_t buffer[NUMBER_OF_7_SEG_LED];
+void update_clock_buffer(uint8_t num, uint8_t index){
+	numBuffer[index] = num;
+}
 void update_seven_segment_driver(uint8_t index){
 	switch (index){
 	case 0:
