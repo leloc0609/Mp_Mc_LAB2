@@ -109,10 +109,7 @@ int main(void)
 	  if (hour >=24){
 		  hour =0;
 	  }
-	  update_clock_buffer(hour/10,0);
-	  update_clock_buffer(hour%10,1);
-	  update_clock_buffer(minute/10,2);
-	  update_clock_buffer(minute%10,3);
+	  update_clock_buffer(hour, minute);
 	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
@@ -243,20 +240,20 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-int counter = 200;
+int counter = 100;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	counter--;
-	if (counter > 150){
+	if (counter > 75){
 		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,1);
 		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,0);
 		update_seven_segment_driver(0);
 	}
-	else if (counter > 100){
+	else if (counter > 50){
 		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,1);
 		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,0);
 		update_seven_segment_driver(1);
 	}
-	else if (counter >50){
+	else if (counter >25){
 		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,1);
 		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,0);
 		update_seven_segment_driver(2);
@@ -269,7 +266,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	if (counter ==0){
 		HAL_GPIO_WritePin(LED_BLINK_PORT,LED_BLINK_PIN,1);
 		HAL_GPIO_WritePin(LED_BLINK_PORT,LED_BLINK_PIN,0);
-		counter=200;
+		counter=100;
 	}
 
 }
