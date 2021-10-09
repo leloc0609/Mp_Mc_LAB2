@@ -151,10 +151,7 @@ int main(void)
 		  if (hour >=24){
 			  hour =0;
 		  }
-		  update_clock_buffer(hour/10,0);
-		  update_clock_buffer(hour%10,1);
-		  update_clock_buffer(minute/10,2);
-		  update_clock_buffer(minute%10,3);
+		  update_clock_buffer(hour, minute);
 	  	  setTimer0(1000);
 	  }
     /* USER CODE END WHILE */

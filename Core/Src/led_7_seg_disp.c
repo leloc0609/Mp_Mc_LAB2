@@ -23,8 +23,11 @@ static uint8_t LED7Conversion[10]={
 };
 static uint8_t numBuffer[NUMBER_OF_7_SEG_LED];
 static uint8_t buffer[NUMBER_OF_7_SEG_LED];
-void update_clock_buffer(uint8_t num, uint8_t index){
-	numBuffer[index] = num;
+void update_clock_buffer(uint8_t hour, uint8_t minute){
+	numBuffer[0] = hour/10;
+	numBuffer[1] = hour%10;
+	numBuffer[2] = minute/10;
+	numBuffer[3] = minute%10;
 }
 void update_seven_segment_driver(uint8_t index){
 	switch (index){
