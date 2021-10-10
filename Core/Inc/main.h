@@ -72,7 +72,40 @@ void Error_Handler(void);
 #define EN3_PORT		GPIOA
 #define EN3_PIN			GPIO_PIN_9
 
+#define COL_1_PIN		GPIO_PIN_1
+#define COL_1_PORT 		GPIOA
+#define COL_2_PIN		GPIO_PIN_2
+#define COL_2_PORT 		GPIOA
+#define COL_3_PIN		GPIO_PIN_10
+#define COL_3_PORT 		GPIOA
+#define COL_4_PIN		GPIO_PIN_11
+#define COL_4_PORT 		GPIOA
+#define COL_5_PIN		GPIO_PIN_12
+#define COL_5_PORT 		GPIOA
+#define COL_6_PIN		GPIO_PIN_13
+#define COL_6_PORT 		GPIOA
+#define COL_7_PIN		GPIO_PIN_14
+#define COL_7_PORT 		GPIOA
+#define COL_8_PIN		GPIO_PIN_15
+#define COL_8_PORT 		GPIOA
 
+
+#define ROW_1_PIN		GPIO_PIN_8
+#define ROW_1_PORT		GPIOB
+#define ROW_2_PIN		GPIO_PIN_9
+#define ROW_2_PORT		GPIOB
+#define ROW_3_PIN		GPIO_PIN_10
+#define ROW_3_PORT		GPIOB
+#define ROW_4_PIN		GPIO_PIN_11
+#define ROW_4_PORT		GPIOB
+#define ROW_5_PIN		GPIO_PIN_12
+#define ROW_5_PORT		GPIOB
+#define ROW_6_PIN		GPIO_PIN_13
+#define ROW_6_PORT		GPIOB
+#define ROW_7_PIN		GPIO_PIN_14
+#define ROW_7_PORT		GPIOB
+#define ROW_8_PIN		GPIO_PIN_15
+#define ROW_8_PORT		GPIOB
 
 #define SEG_A_1_PORT		GPIOB
 #define SEG_A_1_PIN			GPIO_PIN_0
