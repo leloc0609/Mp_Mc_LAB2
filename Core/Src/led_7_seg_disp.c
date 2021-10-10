@@ -7,6 +7,7 @@
 
 #include "main.h"
 #include "led_7_seg_disp.h"
+
 #define NUMBER_OF_7_SEG_LED 4
 
 static uint8_t LED7Conversion[10]={
@@ -23,27 +24,47 @@ static uint8_t LED7Conversion[10]={
 };
 static uint8_t numBuffer[NUMBER_OF_7_SEG_LED];
 static uint8_t buffer[NUMBER_OF_7_SEG_LED];
+
+void setLED(void){
+	HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,1);
+	HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,1);
+	HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,1);
+	HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,1);
+	HAL_GPIO_WritePin(LED_BLINK_PORT, LED_BLINK_PIN, 0);
+}
 void update_clock_buffer(uint8_t hour, uint8_t minute){
-	numBuffer[0] = hour/10;
-	numBuffer[1] = hour%10;
-	numBuffer[2] = minute/10;
-	numBuffer[3] = minute%10;
+	if (hour <24 && minute <60){
+		numBuffer[0] = hour/10;
+		numBuffer[1] = hour%10;
+		numBuffer[2] = minute/10;
+		numBuffer[3] = minute%10;
+	}
+	else return;
 }
 void update_seven_segment_driver(uint8_t index){
+	if (index > 3 && index < 0) return;
 	switch (index){
 	case 0:
+		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,1);
+		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,0);
 		buffer[0]=LED7Conversion[numBuffer[0]];
 		seven_segment_driver(0);
 		break;
 	case 1:
+		HAL_GPIO_WritePin(EN0_PORT, EN0_PIN,1);
+		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,0);
 		buffer[1]=LED7Conversion[numBuffer[1]];
 		seven_segment_driver(1);
 		break;
 	case 2:
+		HAL_GPIO_WritePin(EN1_PORT, EN1_PIN,1);
+		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,0);
 		buffer[2]=LED7Conversion[numBuffer[2]];
 		seven_segment_driver(2);
 		break;
 	case 3:
+		HAL_GPIO_WritePin(EN2_PORT, EN2_PIN,1);
+		HAL_GPIO_WritePin(EN3_PORT, EN3_PIN,0);
 		buffer[3]=LED7Conversion[numBuffer[3]];
 		seven_segment_driver(3);
 		break;

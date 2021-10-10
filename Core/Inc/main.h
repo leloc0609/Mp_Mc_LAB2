@@ -59,6 +59,8 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 /* USER CODE BEGIN Private defines */
+#define DOT_PORT		GPIOA
+#define DOT_PIN			GPIO_PIN_4
 #define LED_BLINK_PORT 	GPIOA
 #define LED_BLINK_PIN 	GPIO_PIN_5
 #define EN0_PORT		GPIOA
@@ -69,6 +71,8 @@ void Error_Handler(void);
 #define EN2_PIN			GPIO_PIN_8
 #define EN3_PORT		GPIOA
 #define EN3_PIN			GPIO_PIN_9
+
+
 
 #define SEG_A_1_PORT		GPIOB
 #define SEG_A_1_PIN			GPIO_PIN_0
