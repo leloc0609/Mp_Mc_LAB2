@@ -123,7 +123,7 @@ int main(void)
 	 	  	  setTimer0(1000);
 	 	  }
 	 	  update_seven_segment_driver(led7seg_flag);
-	 	 updateMatrix(matrixLED_flag);
+	 	 updateMatrix(matrixLED_flag, matrixLED_shift_flag);
   }
   /* USER CODE END 3 */
 }

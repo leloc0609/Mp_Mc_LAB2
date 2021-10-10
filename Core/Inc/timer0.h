@@ -15,7 +15,7 @@ extern int timer0_counter;
 extern int timer0_flag;
 extern int led7seg_flag;
 extern int matrixLED_flag;
-
+extern int matrixLED_shift_flag;
 void setTimer0(int duration);
 void timer_run(void);
 
