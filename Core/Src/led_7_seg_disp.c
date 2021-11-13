@@ -33,13 +33,10 @@ void setLED(void){
 	HAL_GPIO_WritePin(LED_BLINK_PORT, LED_BLINK_PIN, 0);
 }
 void update_clock_buffer(uint8_t hour, uint8_t minute){
-	if (hour <24 && minute <60){
 		numBuffer[0] = hour/10;
 		numBuffer[1] = hour%10;
 		numBuffer[2] = minute/10;
 		numBuffer[3] = minute%10;
-	}
-	else return;
 }
 void update_seven_segment_driver(uint8_t index){
 	if (index > 3 && index < 0) return;

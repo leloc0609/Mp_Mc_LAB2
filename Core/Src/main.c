@@ -119,7 +119,7 @@ int main(void)
 	 		  if (hour >=24){
 	 			  hour =0;
 	 		  }
-	 		  update_clock_buffer(hour, minute);
+	 		  update_clock_buffer(minute, second);
 	 	  	  setTimer0(1000);
 	 	  }
 	 	  update_seven_segment_driver(led7seg_flag);
